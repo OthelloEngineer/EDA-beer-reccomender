@@ -1,7 +1,7 @@
-package customer.producer;
+package org.com.customer.producer;
 
-import customer.events.CreateCustomer;
-import customer.events.CustomerPayload;
+import org.com.customer.events.CreateCustomer;
+import org.com.customer.events.CustomerPayload;
 
 import java.util.UUID;
 

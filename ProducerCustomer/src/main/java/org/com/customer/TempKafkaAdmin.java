@@ -1,4 +1,4 @@
-package customer;
+package org.com.customer;
 
 import org.apache.kafka.clients.admin.Admin;
 import org.apache.kafka.clients.admin.CreateTopicsResult;

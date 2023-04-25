@@ -1,4 +1,4 @@
-package customer.events;
+package org.com.customer.events;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

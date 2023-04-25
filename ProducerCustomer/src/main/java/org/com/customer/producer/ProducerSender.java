@@ -1,6 +1,6 @@
-package customer.producer;
+package org.com.customer.producer;
 
-import customer.events.CustomerPayload;
+import org.com.customer.events.CustomerPayload;
 import org.apache.kafka.clients.producer.*;
 
 import java.util.concurrent.Future;

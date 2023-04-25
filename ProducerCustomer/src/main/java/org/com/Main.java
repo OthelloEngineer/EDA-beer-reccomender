@@ -1,10 +1,8 @@
-import customer.TempKafkaAdmin;
-import customer.events.CreateCustomer;
-import customer.producer.CustomerEventSender;
-import customer.producer.ProducerSendOne;
-import customer.producer.ProducerSender;
+package org.com;
 
-import java.util.UUID;
+import org.com.customer.producer.ProducerSendOne;
+import org.com.customer.producer.ProducerSender;
+
 import java.util.concurrent.ExecutionException;
 
 public class Main {
@@ -13,6 +11,8 @@ public class Main {
         //tempKafkaAdmin.createCustomerTopic();
         System.out.println("Hello World!");
         ProducerSendOne producerSendOne = new ProducerSendOne(new ProducerSender("customer-test-event"));
-        producerSendOne.createOneCustomer();
+        for (int i = 0; i < 900; i++) {
+            producerSendOne.createOneCustomer();
+        }
     }
 }

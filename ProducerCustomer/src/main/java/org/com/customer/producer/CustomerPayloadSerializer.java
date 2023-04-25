@@ -1,7 +1,7 @@
-package customer.producer;
+package org.com.customer.producer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import customer.events.CustomerPayload;
+import org.com.customer.events.CustomerPayload;
 import org.apache.kafka.common.serialization.Serializer;
 
 public class CustomerPayloadSerializer implements Serializer<CustomerPayload> {
