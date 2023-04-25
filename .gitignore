@@ -1,0 +1,8 @@
+#standard git ignore for intellij projects
+*.iml
+*.ipr
+*.iws
+.idea/
+.idea_modules/
+out/
+target/
