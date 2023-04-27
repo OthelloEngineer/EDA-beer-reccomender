@@ -1,10 +1,10 @@
 package org.com;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.com.events.CustomerPayload;
+import org.com.events.UserPayload;
 
 public class ReceiveEvent {
-    public final CustomerPayload payload;
+    public final UserPayload payload;
 
     private final Throwable error;
 
@@ -12,14 +12,14 @@ public class ReceiveEvent {
 
     private final String encodedValue;
 
-    public ReceiveEvent(CustomerPayload payload, Throwable error, ConsumerRecord<String, ?> record, String encodedValue) {
+    public ReceiveEvent(UserPayload payload, Throwable error, ConsumerRecord<String, ?> record, String encodedValue) {
         this.payload = payload;
         this.error = error;
         this.record = record;
         this.encodedValue = encodedValue;
     }
 
-    public CustomerPayload getPayload() {
+    public UserPayload getPayload() {
         return payload;
     }
 

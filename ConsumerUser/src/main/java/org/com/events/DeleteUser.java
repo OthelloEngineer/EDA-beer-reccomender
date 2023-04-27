@@ -4,10 +4,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.UUID;
 
-public class UpdateCustomer extends CustomerPayload {
+public class DeleteUser extends UserPayload {
     @JsonProperty
-    public static final String TYPE = "UPDATE_CUSTOMER";
-    public UpdateCustomer(UUID id) {
+    public static final String TYPE = "DELETE_CUSTOMER";
+
+    public DeleteUser(UUID id) {
         super(id);
     }
 

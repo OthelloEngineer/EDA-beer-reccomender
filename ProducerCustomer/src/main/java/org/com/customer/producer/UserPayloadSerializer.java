@@ -1,14 +1,14 @@
 package org.com.customer.producer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.com.customer.events.CustomerPayload;
+import org.com.customer.events.UserPayload;
 import org.apache.kafka.common.serialization.Serializer;
 
-public class CustomerPayloadSerializer implements Serializer<CustomerPayload> {
+public class UserPayloadSerializer implements Serializer<UserPayload> {
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
-    public byte[] serialize(String topic, CustomerPayload data) {
+    public byte[] serialize(String topic, UserPayload data) {
         try {
             System.out.println("Serializing data: " +
                     objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(data) + " to topic: " + topic);

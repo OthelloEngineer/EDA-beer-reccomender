@@ -10,7 +10,7 @@
 
     <modules>
         <module>ProducerCustomer</module>
-        <module>ConsumerCustomer</module>
+        <module>ConsumerUser</module>
     </modules>
 
     <properties>

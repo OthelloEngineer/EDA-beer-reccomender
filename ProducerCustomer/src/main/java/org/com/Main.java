@@ -11,7 +11,7 @@ public class Main {
        TempKafkaAdmin tempKafkaAdmin = new TempKafkaAdmin();
        tempKafkaAdmin.createCustomerTopic();
         System.out.println("Hello World!");
-        ProducerSendOne producerSendOne = new ProducerSendOne(new ProducerSender("customer-test-event"));
+        ProducerSendOne producerSendOne = new ProducerSendOne(new ProducerSender("user-test-event"));
         for (int i = 0; i < 900; i++) {
             producerSendOne.createOneCustomer();
         }

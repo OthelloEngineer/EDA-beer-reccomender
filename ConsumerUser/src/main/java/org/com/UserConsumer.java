@@ -5,7 +5,7 @@ import com.obsidiandynamics.worker.WorkerThread;
 import org.apache.kafka.clients.consumer.*;
 import org.apache.kafka.common.TopicPartition;
 import org.apache.kafka.common.serialization.StringDeserializer;
-import org.com.events.CustomerPayload;
+import org.com.events.UserPayload;
 
 import java.time.Duration;
 import java.util.HashMap;
@@ -14,18 +14,18 @@ import java.util.Queue;
 import java.util.Set;
 import java.util.concurrent.*;
 
-public class CustomerConsumer extends AbstractReceiver{
+public class UserConsumer extends AbstractReceiver{
     long count;
     long start;
     long end;
     private final WorkerThread pollingThread;
     private final WorkerThread processingThread;
-    private final Consumer<String, CustomerPayload> consumer;
+    private final Consumer<String, UserPayload> consumer;
     private final Duration pollTimeout;
     private final BlockingQueue<ReceiveEvent> receivedEvents;
     private final Queue<Map<TopicPartition, OffsetAndMetadata>> pendingOffsets;
 
-    public CustomerConsumer(Map<String, Object> consumerConfig, String topic, Duration pollTimeout, int queueCapacity){
+    public UserConsumer(Map<String, Object> consumerConfig, String topic, Duration pollTimeout, int queueCapacity){
         this.pollTimeout = pollTimeout;
         this.receivedEvents = new LinkedBlockingQueue<>(queueCapacity);
         this.pendingOffsets = new LinkedBlockingQueue<>();
@@ -40,17 +40,17 @@ public class CustomerConsumer extends AbstractReceiver{
 
 
         this.pollingThread = WorkerThread.builder()
-                .withOptions(new WorkerOptions().daemon().withName(CustomerConsumer.class, "polling"))
+                .withOptions(new WorkerOptions().daemon().withName(UserConsumer.class, "polling"))
                 .onCycle(this::onPollCycle)
                 .build();
         this.processingThread = WorkerThread.builder()
-                .withOptions(new WorkerOptions().daemon().withName(CustomerConsumer.class, "processing"))
+                .withOptions(new WorkerOptions().daemon().withName(UserConsumer.class, "processing"))
                 .onCycle(this::onProcessCycle)
                 .build();
     }
 
     private void onPollCycle(WorkerThread thread) throws InterruptedException {
-        final ConsumerRecords<String, CustomerPayload> records = consumer.poll(pollTimeout);
+        final ConsumerRecords<String, UserPayload> records = consumer.poll(pollTimeout);
         for (var record : records) {
             if (count == 0){
                 start = System.currentTimeMillis();
@@ -61,7 +61,7 @@ public class CustomerConsumer extends AbstractReceiver{
                 System.out.println("Time taken to close consumer: " + (end - start) + "ms");
             }
             System.out.println(count);
-            final CustomerPayload value = record.value();
+            final UserPayload value = record.value();
             final var event = new ReceiveEvent(value, null, record, record.value().toString());
             receivedEvents.put(event);
         }

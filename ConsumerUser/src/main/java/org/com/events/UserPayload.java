@@ -1,4 +1,4 @@
-package org.com.customer.events;
+package org.com.events;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -8,15 +8,15 @@ import java.util.UUID;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "type")
 @JsonSubTypes({
-    @JsonSubTypes.Type(value = CreateCustomer.class, name = CreateCustomer.TYPE),
-    @JsonSubTypes.Type(value = DeleteCustomer.class, name = "DELETE_CUSTOMER"),
-    @JsonSubTypes.Type(value = UpdateCustomer.class, name = "UPDATE_CUSTOMER")
+    @JsonSubTypes.Type(value = CreateUser.class, name = CreateUser.TYPE),
+    @JsonSubTypes.Type(value = DeleteUser.class, name = "DELETE_CUSTOMER"),
+    @JsonSubTypes.Type(value = UpdateUser.class, name = "UPDATE_CUSTOMER")
 })
 
-public abstract class CustomerPayload {
+public abstract class UserPayload {
     @JsonProperty
     public UUID id;
-    public CustomerPayload(UUID id) {
+    public UserPayload(UUID id) {
         this.id = id;
     }
     public abstract String getType();

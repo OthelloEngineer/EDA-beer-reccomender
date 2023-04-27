@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.UUID;
 
-public class CreateCustomer extends CustomerPayload {
+public class CreateUser extends UserPayload {
     @JsonProperty
     public static final String TYPE = "CREATE_CUSTOMER";
     @JsonProperty
@@ -24,15 +24,15 @@ public class CreateCustomer extends CustomerPayload {
     @JsonProperty
     public String country;
 
-    public CreateCustomer(@JsonProperty("id") UUID id,
-                          @JsonProperty("age") int age,
-                          @JsonProperty("name") String name,
-                          @JsonProperty("email") String email,
-                          @JsonProperty("phone") String phone,
-                          @JsonProperty("address") String address,
-                          @JsonProperty("city") String city,
-                          @JsonProperty("zip") String zip,
-                          @JsonProperty("country") String country) {
+    public CreateUser(@JsonProperty("id") UUID id,
+                      @JsonProperty("age") int age,
+                      @JsonProperty("name") String name,
+                      @JsonProperty("email") String email,
+                      @JsonProperty("phone") String phone,
+                      @JsonProperty("address") String address,
+                      @JsonProperty("city") String city,
+                      @JsonProperty("zip") String zip,
+                      @JsonProperty("country") String country) {
         super(id);
         this.age = age;
         this.name = name;
@@ -104,8 +104,8 @@ public class CreateCustomer extends CustomerPayload {
             return this;
         }
 
-        public CreateCustomer build() {
-            return new CreateCustomer(id, age, name, email, phone, address, city, zip, country);
+        public CreateUser build() {
+            return new CreateUser(id, age, name, email, phone, address, city, zip, country);
         }
     }
 }

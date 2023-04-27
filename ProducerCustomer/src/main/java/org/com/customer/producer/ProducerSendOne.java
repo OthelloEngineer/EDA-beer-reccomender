@@ -1,18 +1,18 @@
 package org.com.customer.producer;
 
-import org.com.customer.events.CreateCustomer;
-import org.com.customer.events.CustomerPayload;
+import org.com.customer.events.CreateUser;
+import org.com.customer.events.UserPayload;
 
 import java.util.UUID;
 
 public class ProducerSendOne {
-    private final CustomerEventSender sender;
+    private final UserEventSender sender;
 
-    public ProducerSendOne(CustomerEventSender sender) {
+    public ProducerSendOne(UserEventSender sender) {
         this.sender = sender;
     }
     public void createOneCustomer(){
-        CustomerPayload payload = new CreateCustomer.Builder(UUID.randomUUID())
+        UserPayload payload = new CreateUser.Builder(UUID.randomUUID())
                 .age(18)
                 .country("Danmark")
                 .zip("5220")
