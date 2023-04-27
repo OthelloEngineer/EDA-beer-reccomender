@@ -11,4 +11,9 @@ public class DeleteCustomer extends CustomerPayload {
     public DeleteCustomer(UUID id) {
         super(id);
     }
+
+    @Override
+    public String getType() {
+        return TYPE;
+    }
 }
