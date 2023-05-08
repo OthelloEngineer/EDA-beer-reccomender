@@ -10,10 +10,12 @@ public class Main {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
        TempKafkaAdmin tempKafkaAdmin = new TempKafkaAdmin();
        tempKafkaAdmin.createCustomerTopic();
-        System.out.println("Hello World!");
         ProducerSendOne producerSendOne = new ProducerSendOne(new ProducerSender("user-test-event"));
-        for (int i = 0; i < 900; i++) {
+        long start = System.currentTimeMillis();
+        for (int i = 0; i < 1_000_000; i++) {
             producerSendOne.createOneCustomer();
         }
+        long end = System.currentTimeMillis();
+        System.out.println("Time: " + (end - start));
     }
 }

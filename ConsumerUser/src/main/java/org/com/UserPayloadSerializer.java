@@ -1,8 +1,9 @@
-package org.com.customer.producer;
+package org.com;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.com.customer.events.UserPayload;
 import org.apache.kafka.common.serialization.Serializer;
+import org.com.events.UserPayload;
+
 
 public class UserPayloadSerializer implements Serializer<UserPayload> {
     private final ObjectMapper objectMapper = new ObjectMapper();

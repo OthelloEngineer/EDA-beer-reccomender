@@ -1,28 +1,27 @@
 create TABLE  country(
-                         "id" SERIAL PRIMARY KEY,
-                         "name" VARCHAR(255) NOT NULL UNIQUE
+     "id" SERIAL PRIMARY KEY,
+     "name" VARCHAR(255) NOT NULL UNIQUE
 );
 
 create TABLE city(
-                     "id" SERIAL PRIMARY KEY,
-                     "name" VARCHAR(255) NOT NULL,
-                     "address" VARCHAR(255) NOT NULL,
-                     "zip_code" VARCHAR(255) NOT NULL UNIQUE,
-                     "country_id" INTEGER NOT NULL,
-                     FOREIGN KEY("country_id") REFERENCES country("id")
+     "id" SERIAL PRIMARY KEY,
+     "name" VARCHAR(255) NOT NULL,
+     "address" VARCHAR(255) NOT NULL,
+     "zip_code" VARCHAR(255) NOT NULL UNIQUE,
+     "country_id" INTEGER NOT NULL,
+     FOREIGN KEY("country_id") REFERENCES country("id")
 );
 
 create TABLE "user"(
-                       "id" SERIAL PRIMARY KEY,
-                       "name" VARCHAR(255) NOT NULL,
-                       "age" SMALLINT NOT NULL,
-                       "email" VARCHAR(255) NOT NULL,
-                       "phone" VARCHAR(255) NOT NULL,
-                       "city_id" INTEGER NOT NULL,
-                       FOREIGN KEY("city_id") REFERENCES city("id")
+       "id" SERIAL PRIMARY KEY,
+       "name" VARCHAR(255) NOT NULL,
+       "age" SMALLINT NOT NULL,
+       "email" VARCHAR(255) NOT NULL,
+       "phone" VARCHAR(255) NOT NULL,
+       "city_id" INTEGER NOT NULL,
+       FOREIGN KEY("city_id") REFERENCES city("id")
 );
 
---create a stored procedure to insert a new user with a city and country
 CREATE OR REPLACE PROCEDURE insert_user(
    user_name VARCHAR(255),
    age INTEGER,

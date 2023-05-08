@@ -24,7 +24,6 @@ public class TempKafkaAdmin {
         String topic = "user-test-event";
         NewTopic newTopic = new NewTopic(topic, partions, replicationFactor);
         CreateTopicsResult result = admin.createTopics(Collections.singleton(newTopic));
-        System.out.println(result.values().keySet());
         KafkaFuture<Void> future = result.values().get(topic);
         admin.close();
     }

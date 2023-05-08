@@ -2,8 +2,6 @@ package org.com.database.adapters;
 
 import org.com.database.DBservice;
 import org.com.events.CreateUser;
-import org.postgresql.jdbc.*;
-import org.postgresql.jdbc2.optional.ConnectionPool;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
